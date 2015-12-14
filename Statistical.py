@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 import os
 from Helper import *
@@ -37,19 +39,19 @@ class Statistical(object):
   def showFrequencies1(self,code):
     result = ''
     for c in sorted(self.stats1, key=self.stats1.get, reverse = True):
-      result += "%s:%3d->%s" % (c, self.stats1[c],code[c])
+      result += "%s:%3d -> %s\n" % (c, self.stats1[c],code[c])
     return result
 
   def showFrequencies2(self,code):
     result = ''
     for c in sorted(self.stats2, key=self.stats2.get, reverse = True):
-      result += "%s:%2d->%s" % (c, self.stats2[c],code[c[0:1]] + code[c[1:2]])
+      result += "%s:%2d -> %s\n" % (c, self.stats2[c],code[c[0:1]] + code[c[1:2]])
     return result
 
   def showFrequencies3(self,code):
     result = ''
     for c in sorted(self.stats3, key=self.stats3.get, reverse = True):
-      result += "%s:%2d->%s" % (c, self.stats3[c],code[c[0:1]] + code[c[1:2]] + code[c[2:3]])
+      result += "%s:%2d -> %s\n" % (c, self.stats3[c],code[c[0:1]] + code[c[1:2]] + code[c[2:3]])
     return result
 
   def accept(self, command,ciphertext, code):

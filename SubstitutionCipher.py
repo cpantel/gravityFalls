@@ -7,11 +7,6 @@ class SubstitutionCipher(object):
     self.code = {}
     self.stats = Statistical()
 
-  def load(self, ciphertext):
-    self.ciphertext = ciphertext
-    for c in self.ciphertext:
-      self.code[c] = "·"
-
   def showCodes(self):
     result = ''      
     for c in self.code:
@@ -24,16 +19,23 @@ class SubstitutionCipher(object):
       clear = '·'
     self.code[cipher] = clear;
 
+  def updateCodes(self, ciphertext):
+    for c in ciphertext:
+      if Helper:inRange(c):
+        try:
+          self.code[c]
+        except KeyError:
+          self.code[c] = '·'
+
   def decrypt(self,ciphertext):
+    self.updateCodes(ciphertext)
     result = ''
     lowerLimit = Helper.lowerLimit
     upperLimit = Helper.upperLimit
     for char in ciphertext:
       if Helper.inRange(char):
-        if self.code[char] != '':
-          result += self.code[char]
-        else:
-          result += '·'
+        result += self.code[char]
+
       else:
         result += char               
     return result
@@ -47,5 +49,6 @@ class SubstitutionCipher(object):
     elif command == 'try Substitution':
       return (True, False, '    ' + self.decrypt(ciphertext))
     else:
+      self.updateCodes(ciphertext)
       return self.stats.accept(command, ciphertext, self.code)
 

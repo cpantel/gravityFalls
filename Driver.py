@@ -14,50 +14,17 @@ class Driver(object):
          self.substitutionCipher =  SubstitutionCipher()
          self.printer.setCols()
 
-
-    def load(self, ciphertext):
-        self.ciphertext = ciphertext
-        self.cleartext = '?' * len(self.ciphertext)
-        self.substitutionCipher.load(self.ciphertext)
-
-  
-  #  def showMessages(self):
-      
-        #idx=0
-        #while idx * self.colWidth < len(self.ciphertext): 
-            #sys.stdout.write( self.ciphertext[idx * self.colWidth :(idx * self.colWidth) + self.colWidth])
-            #times = len(self.ciphertext) / ( idx + 1 )
-            #if times < self.colWidth:
-                #spaces = ' ' * ( 4 + self.colWidth - (len(self.ciphertext) - idx * self.colWidth ) )
-            #else:
-                #spaces = ' ' * 4
-                     
-            #sys.stdout.write( spaces )
-            #sys.stdout.write( self.cleartext[idx * self.colWidth :(idx * self.colWidth)  + self.colWidth])
-            #print
-            #idx = idx + 1
-
-    #def show(self):
-        #self.showMessages()
-        #self.showDic()
-        #self.showFrequencies()
-
- 
-
     def accept(self):
         command = raw_input('?: ')             
-        ### self.setCols()
 
         if command == 'q' or command == 'quit':
             return False
-        elif command == '' or command[0:1] == 'm':
+        elif  command[0:1] == 'm':
+          if command == 'm':
             (handled, error, result) = (True,False, '    ' + self.ciphertext)
-        #elif command[0:1] == 'c': 
-            #self.setCols()  # command[1:5]
-        #elif command == 'a' or command == 'autoCol':
-            #self.stats.toggleAutoCol()
-        #elif command == 's' or command == 'show':
-            #(handled, error, result) = (True,False,self.ciphertext);
+          else:
+            self.ciphertext = command[2:]
+            (handled, error, result) = (True, False, self.ciphertext)
         else:
            handlers = { self.atbashCipher, self.substitutionCipher,  self.caesarCipher, Helper }
            for handler in handlers:
@@ -70,7 +37,6 @@ class Driver(object):
            self.printHelp()
         else:
            print result
-   
         return True
 
     def printHelp(self):

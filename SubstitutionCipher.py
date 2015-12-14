@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Statistical import *
 from Helper import *
 
@@ -9,7 +10,7 @@ class SubstitutionCipher(object):
   def load(self, ciphertext):
     self.ciphertext = ciphertext
     for c in self.ciphertext:
-      self.code[c] = "?"
+      self.code[c] = "·"
 
   def showCodes(self):
     result = ''      
@@ -20,7 +21,7 @@ class SubstitutionCipher(object):
 
   def setCode(self, cipher, clear):
     if clear == '':
-      clear = '#'
+      clear = '·'
     self.code[cipher] = clear;
 
   def decrypt(self,ciphertext):
@@ -32,7 +33,7 @@ class SubstitutionCipher(object):
         if self.code[char] != '':
           result += self.code[char]
         else:
-          result += '#'
+          result += '·'
       else:
         result += char               
     return result
@@ -44,7 +45,7 @@ class SubstitutionCipher(object):
       self.setCode(command[4:5], command[6:7])
       return (True, False, '')
     elif command == 'try Substitution':
-      return (True, False, self.decrypt(ciphertext))
+      return (True, False, '    ' + self.decrypt(ciphertext))
     else:
       return self.stats.accept(command, ciphertext, self.code)
 

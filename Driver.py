@@ -21,7 +21,8 @@ class Driver(object):
         self.substitutionCipher.load(self.ciphertext)
 
   
-    #def showMessages(self):
+  #  def showMessages(self):
+      
         #idx=0
         #while idx * self.colWidth < len(self.ciphertext): 
             #sys.stdout.write( self.ciphertext[idx * self.colWidth :(idx * self.colWidth) + self.colWidth])
@@ -49,14 +50,14 @@ class Driver(object):
 
         if command == 'q' or command == 'quit':
             return False
-        #elif command == '' or command[0:1] == 'm':
-            #self.showMessages()
+        elif command == '' or command[0:1] == 'm':
+            (handled, error, result) = (True,False, '    ' + self.ciphertext)
         #elif command[0:1] == 'c': 
             #self.setCols()  # command[1:5]
         #elif command == 'a' or command == 'autoCol':
             #self.stats.toggleAutoCol()
-        elif command == 's' or command == 'show':
-            result = (True,True,self.ciphertext);
+        #elif command == 's' or command == 'show':
+            #(handled, error, result) = (True,False,self.ciphertext);
         else:
            handlers = { self.atbashCipher, self.substitutionCipher,  self.caesarCipher, Helper }
            for handler in handlers:

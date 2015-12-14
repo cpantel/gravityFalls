@@ -49,7 +49,7 @@ class Driver(object):
             print "    f1                     -> show letter frequency"
             print "    f2                     -> show digram frequency"
             print "    f3                     -> show trigram frequency"
-            print " (TODO) ffw                 -> show first char word frequency"
+            print "    ffw                    -> show first char word frequency"
             print "    fw                     -> show word frequency"
             print " (TODO) fd                  -> show double char frequency"
             print " (TODO) patterns            -> show patterns"

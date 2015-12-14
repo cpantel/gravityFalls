@@ -45,6 +45,17 @@ class Statistical(object):
           self.statsW[w] += 1
         else:
           self.statsW[w] = 1
+          
+  def freqFW(self,ciphertext):
+    self.freqW(ciphertext)   
+    self.statsFW = {}
+
+    for w in self.statsW:
+      c = w[0]
+      if c in self.statsFW:
+        self.statsFW[c] += self.statsW[w]
+      else:
+        self.statsFW[c] = self.statsW[w]
 
   def showFrequencies1(self,code):
     result = ''
@@ -80,6 +91,13 @@ class Statistical(object):
       result += "%30s:%3d -> %s\n" % (w,self.statsW[w], translated)
     return result
 
+  def showFrequenciesFW(self,code):
+    result = ''
+    for c in sorted(self.statsFW, key=self.statsFW.get, reverse = True):
+      # refactor translation
+      result += "%s:%3d -> %s\n" % (c, self.statsFW[c],code[c])
+    return result
+
   def accept(self, command,ciphertext, code):
     if command[0:2] == 'f1':
       self.freq1(ciphertext)
@@ -93,4 +111,7 @@ class Statistical(object):
     elif command[0:2] == 'fw':
       self.freqW(ciphertext)
       return (True, False, self.showFrequenciesW(code))
+    elif command[0:3] == 'ffw':
+      self.freqFW(ciphertext)
+      return (True, False, self.showFrequenciesFW(code))
     return (False,False,'')

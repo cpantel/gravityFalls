@@ -39,7 +39,14 @@ class TestStatistical(unittest.TestCase):
       
       sa.freqW("AAAA AAA AAA AA AA AA A A A A")
       self.assertEqual({'A':4,'AA':3,'AAA':2,'AAAA':1}, sa.statsW)
+
+  def test_freqFW(self):
+      sa = Statistical()
+      sa.freqFW("A")
+      self.assertEqual({'A':1}, sa.statsFW)
       
+      sa.freqFW("ABCD ABC ABC AB AB AB A A A A B B B")
+      self.assertEqual({'A':10,'B':3}, sa.statsFW)   
 
 if __name__ == '__main__':
     unittest.main()

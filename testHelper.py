@@ -22,9 +22,9 @@ class TestAny(unittest.TestCase):
      output = Helper.showEnglishCorpus()
      print "\n" +  output
      lines=output.split("\n");
-     self.assertEqual(lines[0], "      ascii |     f1 |     f2 |     f3 |    ffw |     fw" )
-     self.assertEqual(lines[1], " 97 a  65 A |      E |     TH |    THE |      T |    THE" )
-     self.assertEqual(lines[30],"            |        |     OF |    ONT |        |     OR" )
+     self.assertEqual(lines[0], "      ascii |     f1 |     f2 |     f3 |    ffw |     fw |     fd" )
+     self.assertEqual(lines[1], " 97 a  65 A |      E |     TH |    THE |      T |    THE |     LL" )
+     self.assertEqual(lines[30],"            |        |     OF |    ONT |        |     OR |       " )
      
 if __name__ == '__main__':
     unittest.main()

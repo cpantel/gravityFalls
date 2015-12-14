@@ -41,11 +41,15 @@ class Helper(object):
     return ['T','A','S','H','W','I','O','B','M','F','C','L','D','P','N','E','G','R','Y','U','V','J','K','Q','Z','X']
   
   @staticmethod
+  def englishCorpusFD():
+    return ['LL','SS','EE','OO','TT','FF','RR','NN','PP','CC','MM','GG','DD','AA','BB']
+  
+  @staticmethod
   def showEnglishCorpus():
-    sformat = "%11s | %6s | %6s | %6s | %6s | %6s\n"
-    result = sformat % ("ascii", "f1", "f2", "f3", "ffw","fw")
-    for at, f1, f2, f3,ffw,fw in itertools.izip_longest( \
-        Helper.asciiTable(), Helper.englishCorpusF1(), Helper.englishCorpusF2(), Helper.englishCorpusF3(), Helper.englishCorpusFFW(), Helper.englishCorpusFW() \
+    sformat = "%11s | %6s | %6s | %6s | %6s | %6s | %6s\n"
+    result = sformat % ("ascii", "f1", "f2", "f3", "ffw","fw", "fd")
+    for at, f1, f2, f3,ffw,fw, fd in itertools.izip_longest( \
+        Helper.asciiTable(), Helper.englishCorpusF1(), Helper.englishCorpusF2(), Helper.englishCorpusF3(), Helper.englishCorpusFFW(), Helper.englishCorpusFW(), Helper.englishCorpusFD() \
     ):
       if f1 == None:
         f1 = ''
@@ -59,7 +63,9 @@ class Helper(object):
         fw = ''
       if at == None:
         at = ''
-      result += sformat % (at,f1, f2, f3, ffw, fw)
+      if fd == None:
+        fd = ''
+      result += sformat % (at,f1, f2, f3, ffw, fw, fd)
     return result
      
      

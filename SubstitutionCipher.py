@@ -35,7 +35,6 @@ class SubstitutionCipher(object):
     for char in ciphertext:
       if Helper.inRange(char):
         result += self.code[char]
-
       else:
         result += char               
     return result

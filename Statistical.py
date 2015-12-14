@@ -2,6 +2,7 @@
 
 import sys
 import os
+import re
 from Helper import *
 from Printer import *
 
@@ -35,23 +36,48 @@ class Statistical(object):
           self.stats3[trigram] += 1
         else:
           self.stats3[trigram] = 1
+          
+  def freqW(self,ciphertext):
+    self.statsW = {}
+    for w in re.compile("[^A-Z]").split(ciphertext):
+      if w:
+        if w in self.statsW:
+          self.statsW[w] += 1
+        else:
+          self.statsW[w] = 1
 
   def showFrequencies1(self,code):
     result = ''
     for c in sorted(self.stats1, key=self.stats1.get, reverse = True):
+      # refactor translation
       result += "%s:%3d -> %s\n" % (c, self.stats1[c],code[c])
     return result
 
   def showFrequencies2(self,code):
     result = ''
     for c in sorted(self.stats2, key=self.stats2.get, reverse = True):
-      result += "%s:%2d -> %s\n" % (c, self.stats2[c],code[c[0:1]] + code[c[1:2]])
+      # refactor translation
+      result += "%s:%3d -> %s\n" % (c, self.stats2[c],code[c[0:1]] + code[c[1:2]])
     return result
 
   def showFrequencies3(self,code):
     result = ''
     for c in sorted(self.stats3, key=self.stats3.get, reverse = True):
-      result += "%s:%2d -> %s\n" % (c, self.stats3[c],code[c[0:1]] + code[c[1:2]] + code[c[2:3]])
+      # refactor translation
+      result += "%s:%3d -> %s\n" % (c, self.stats3[c],code[c[0:1]] + code[c[1:2]] + code[c[2:3]])
+    return result
+
+  def showFrequenciesW(self,code):
+    result = ''
+    for w in sorted(self.statsW, key=self.statsW.get, reverse = True):
+      translated = ''
+      for c in w:
+        # refactor translation 
+        try:
+          translated += code[c]
+        except KeyError:
+          translated += '·'       
+      result += "%30s:%3d -> %s\n" % (w,self.statsW[w], translated)
     return result
 
   def accept(self, command,ciphertext, code):
@@ -64,4 +90,7 @@ class Statistical(object):
     elif command[0:2] == 'f3':
       self.freq3(ciphertext)
       return (True, False, self.showFrequencies3(code))
+    elif command[0:2] == 'fw':
+      self.freqW(ciphertext)
+      return (True, False, self.showFrequenciesW(code))
     return (False,False,'')

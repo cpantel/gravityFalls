@@ -45,7 +45,16 @@ class Statistical(object):
           self.statsW[w] += 1
         else:
           self.statsW[w] = 1
-          
+ 
+  def freqD(self, ciphertext):
+    self.statsD = {}
+    for match in re.compile(r"(.)\1{1}").finditer(ciphertext):
+      d = match.group(0)
+      if d in self.statsD:
+        self.statsD[d] += 1
+      else:
+        self.statsD[d] = 1
+
   def freqFW(self,ciphertext):
     self.freqW(ciphertext)   
     self.statsFW = {}
@@ -98,6 +107,13 @@ class Statistical(object):
       result += "%s:%3d -> %s\n" % (c, self.statsFW[c],code[c])
     return result
 
+  def showFrequenciesD(self,code):
+    result = ''
+    for c in sorted(self.statsD, key=self.statsD.get, reverse = True):
+      # refactor translation
+      result += "%s:%3d -> %s\n" % (c, self.statsD[c],code[c[0:1]] + code[c[1:2]])
+    return result
+
   def accept(self, command,ciphertext, code):
     if command[0:2] == 'f1':
       self.freq1(ciphertext)
@@ -111,6 +127,9 @@ class Statistical(object):
     elif command[0:2] == 'fw':
       self.freqW(ciphertext)
       return (True, False, self.showFrequenciesW(code))
+    elif command[0:2] == 'fd':
+      self.freqD(ciphertext)
+      return (True, False, self.showFrequenciesD(code))
     elif command[0:3] == 'ffw':
       self.freqFW(ciphertext)
       return (True, False, self.showFrequenciesFW(code))

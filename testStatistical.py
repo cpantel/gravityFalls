@@ -66,8 +66,11 @@ class TestStatistical(unittest.TestCase):
       self.assertEqual( "abacdefe" ,sa.pattern("ABACUSES"))
       self.assertEqual( "abcdefgh" ,sa.pattern("ZWYARFGH"))
       self.assertEqual( "aabcdef" ,sa.pattern("VVUTBFL"))
-      
-
+ 
+  # missing test, do not cheat
+  #def test_patterns(self):
+      #sa = Statistical()
+      #self.assertEqual({'AA':'aa', 'BB':'aa'}, sa.patterns("AA BB"))
 
       
 if __name__ == '__main__':

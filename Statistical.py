@@ -6,6 +6,12 @@ import re
 from Helper import *
 from Printer import *
 
+'''
+pending refactor
+
+instead of code receive a SubstitutionCipher and ask it for the translation
+
+'''
 class Statistical(object):
         
   def freq1(self, ciphertext):         
@@ -81,18 +87,30 @@ class Statistical(object):
         current = chr(ord(current) + 1)
     return pattern
   
-  def patterns(self, nameIn ):
+  # No doubt...
+  def buildPatterns(self, nameIn ):
     with open(nameIn,'r') as f:
       for word in f:
         word = word.strip()
         print "%32s : %32s" % ( self.pattern(word), word)
-
+  
+  def showPatterns(self,ciphertext,code):
+    result = ''
+    self.freqW(ciphertext)
+    for word in self.statsW:
+      pattern = self.pattern(word)
+# refactor translation
+      translated = ''
+      for c in word:
+        translated += code[c]      
+      result += "%32s:%3d -> %20s (%s)\n" % (word, self.statsW[word], pattern, translated)      
+    return result 
 
   def showFrequencies1(self,code):
     result = ''
     for c in sorted(self.stats1, key=self.stats1.get, reverse = True):
       # refactor translation
-      result += "%s:%3d -> %s\n" % (c, self.stats1[c],code[c])
+      result += "%s:%3d -> %s\n" % (c, self.stats1[c], code[c])
     return result
 
   def showFrequencies2(self,code):
@@ -112,13 +130,13 @@ class Statistical(object):
   def showFrequenciesW(self,code):
     result = ''
     for w in sorted(self.statsW, key=self.statsW.get, reverse = True):
+      # refactor translation
       translated = ''
       for c in w:
-        # refactor translation 
-        try:
+        #try:
           translated += code[c]
-        except KeyError:
-          translated += '·'       
+        #except KeyError:
+          #translated += 'Z'       
       result += "%30s:%3d -> %s\n" % (w,self.statsW[w], translated)
     return result
 
@@ -155,6 +173,8 @@ class Statistical(object):
     elif command[0:3] == 'ffw':
       self.freqFW(ciphertext)
       return (True, False, self.showFrequenciesFW(code))
-    elif command[0:7] == 'pattern':
-      return (True, False, self.pattern(command[8:]))    
+    elif command[0:8] == 'pattern ':
+      return (True, False, self.pattern(command[8:]))
+    elif command[0:8] == 'patterns':
+      return (True, False, self.showPatterns(ciphertext,code))
     return (False,False,'')

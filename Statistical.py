@@ -66,6 +66,28 @@ class Statistical(object):
       else:
         self.statsFW[c] = self.statsW[w]
 
+  # I suspect that this method belongs to its own class
+  def pattern(self, ciphertext):
+    current = 'a'
+    pattern = ''
+    table = {}
+
+    for c in ciphertext:
+      if c in table:
+        pattern += table[c]
+      else:
+        table[c] = current
+        pattern += current
+        current = chr(ord(current) + 1)
+    return pattern
+  
+  def patterns(self, nameIn ):
+    with open(nameIn,'r') as f:
+      for word in f:
+        word = word.strip()
+        print "%32s : %32s" % ( self.pattern(word), word)
+
+
   def showFrequencies1(self,code):
     result = ''
     for c in sorted(self.stats1, key=self.stats1.get, reverse = True):
@@ -133,4 +155,6 @@ class Statistical(object):
     elif command[0:3] == 'ffw':
       self.freqFW(ciphertext)
       return (True, False, self.showFrequenciesFW(code))
+    elif command[0:7] == 'pattern':
+      return (True, False, self.pattern(command[8:]))    
     return (False,False,'')

@@ -58,7 +58,17 @@ class TestStatistical(unittest.TestCase):
       
       sa.freqD("AA AA BB CCC ")
       self.assertEqual({'AA':2, 'BB':1, 'CC':1}, sa.statsD)
+ 
+  def test_pattern(self):
+      sa = Statistical()
+      self.assertEqual( "" ,sa.pattern(""))
+      self.assertEqual( "abcdefgh" ,sa.pattern("ABCDEFGH"))
+      self.assertEqual( "abacdefe" ,sa.pattern("ABACUSES"))
+      self.assertEqual( "abcdefgh" ,sa.pattern("ZWYARFGH"))
+      self.assertEqual( "aabcdef" ,sa.pattern("VVUTBFL"))
       
+
+
       
 if __name__ == '__main__':
     unittest.main()

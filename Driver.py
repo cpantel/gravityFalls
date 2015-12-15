@@ -52,6 +52,7 @@ class Driver(object):
             print "    ffw                    -> show first char word frequency"
             print "    fw                     -> show word frequency"
             print "    fd                     -> show double char frequency"
+            print "    pattern WORD           -> show pattern"
             print " (TODO) patterns            -> show patterns"
             print "    try Caesar             -> decrypt with Caesar cipher"
             print "    try Atbash             -> decrypt with Atbash cipher"

@@ -1,10 +1,11 @@
 import sys
+from Helper import *
 
 class AtbashCipher(object):
   
   def decrypt(self,ciphertext):
-    lowerLimit = ord("A")
-    upperLimit = ord("Z")
+    lowerLimit = Helper.lowerLimit
+    upperLimit = Helper.upperLimit
     distance = upperLimit - lowerLimit
     result = ''
 

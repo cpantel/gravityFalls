@@ -1,11 +1,12 @@
 import sys
+from Helper import *
 
 class CaesarCipher(object):
   
   def decrypt(self,ciphertext,offset):
-     lowerLimit = ord("A")
-     upperLimit = ord("Z")
-     fix = 1 + ord("Z") - ord("A")
+     lowerLimit = Helper.lowerLimit
+     upperLimit = Helper.upperLimit
+     fix = 1 + upperLimit - lowerLimit
      result = ''
      for char in ciphertext:
         if ord(char) < lowerLimit or ord(char) > upperLimit:

@@ -1,6 +1,6 @@
-#!/usr/bin/python
 import sys
 import os
+from Helper import *
 
 class Statistical(object):
     def __init__(self):
@@ -13,10 +13,10 @@ class Statistical(object):
          
     def freq1(self, text):         
         self.stats1 = {}
+        lowerLimit = Helper.lowerLimit
+        upperLimit = Helper.upperLimit
         for c in text:
-          if self.spacing != False and c == self.spacing:
-            pass
-          else:
+          if self.spacing != False and Helper.inRange(c):
             if c in self.stats1:
                 self.stats1[c] += 1
             else:
@@ -26,7 +26,7 @@ class Statistical(object):
         self.stats2 = {}
         for idx in range(0,len(text) - 1):
           digram= text[idx:idx + 2]
-          if self.spacing != False and self.spacing in digram:
+          if self.spacing != False and self.spacing in digram:  ## fix it
             pass
           else:
             if digram in self.stats2:
@@ -38,7 +38,7 @@ class Statistical(object):
         self.stats3 = {}
         for idx in range(0,len(text) - 2):
           trigram= text[idx:idx + 3]
-          if self.spacing != False and self.spacing in trigram:
+          if self.spacing != False and self.spacing in trigram: ## fix it
             pass
           else:
             if trigram in self.stats3:

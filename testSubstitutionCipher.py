@@ -1,12 +1,12 @@
 import unittest
-from SubstitutionAttack import *
+from SubstitutionCipher import *
 
 class TestAny(unittest.TestCase):
   def test_upper(self):
-      sa = SubstitutionAttack()
+      sa = SubstitutionCipher()
 
   def test_load(self):
-     sa = SubstitutionAttack()
+     sa = SubstitutionCipher()
      sa.load         ("zhofrph wr judylwb idoov")
      self.assertEqual("????????????????????????",sa.cleartext)
 

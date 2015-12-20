@@ -1,4 +1,4 @@
-from SubstitutionAttack import *
+from SubstitutionCipher import *
 
 
 
@@ -15,7 +15,7 @@ mensaje = "zhofrph wr judylwb idoov"
 #mensaje="lar zpuhtfty xweupjr ghgzt - pvrek big qf. jcdqzrf' znvefh obcx: 'c bewrs vvutbfl bt bknx cvay - pyol ys qh llfdjw: vah dncvfw ztckw xkg wffwwknllmrp? wisagcxj ar wkuisw! dpx wdsukxr: llh ubfo"
  
 
-attacker = SubstitutionAttack()
+attacker = SubstitutionCipher()
 attacker.load(mensaje)
 attacker.showMessages()
 while not attacker.exit:

@@ -1,6 +1,6 @@
 import sys
 
-class CaesarAttack(object):
+class CaesarCipher(object):
   
   def decrypt(self,ciphertext,offset):
      lowerLimit = ord("a")

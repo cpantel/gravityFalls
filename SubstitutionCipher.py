@@ -1,10 +1,10 @@
 import sys
 import os
 from Statistical import *
-from CaesarAttack import *
-from AtbashAttack import *
+from CaesarCipher import *
+from AtbashCipher import *
 
-class SubstitutionAttack(object):
+class SubstitutionCipher(object):
     def __init__(self):
          self.exit = False
          self.dic = {}
@@ -121,11 +121,11 @@ class SubstitutionAttack(object):
         elif command == 's' or command == 'show':
             self.show()
         elif command == 'try Caesar':
-            caesarAttack =  CaesarAttack()
-            caesarAttack.tryAll(self.ciphertext)
+            caesarCipher =  CaesarCipher()
+            caesarCipher.tryAll(self.ciphertext)
         elif command == 'try Atbash':
-            atbashAttack =  AtbashAttack()
-            atbashAttack.run(self.ciphertext)
+            atbashCipher =  AtbashCipher()
+            atbashCipher.run(self.ciphertext)
         elif command == 'ascii':
            lowerLimit = ord("a")
            upperLimit = ord("z")        

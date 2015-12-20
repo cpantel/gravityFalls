@@ -1,9 +1,9 @@
 import unittest
-from CaesarAttack import *
+from CaesarCipher import *
 
-class TestCaesarAttack(unittest.TestCase):
-  def test_freq1(self):
-      sa = CaesarAttack()
+class TestCaesarCipher(unittest.TestCase):
+  def test_decrypt(self):
+      sa = CaesarCipher()
       
       self.assertEqual("xyz",sa.decrypt("abc",3))
 

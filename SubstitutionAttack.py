@@ -122,7 +122,7 @@ class SubstitutionAttack(object):
             self.show()
         elif command == 'try Caesar':
             caesarAttack =  CaesarAttack()
-            caesarAttack.run(self.ciphertext)
+            caesarAttack.tryAll(self.ciphertext)
         elif command == 'try Atbash':
             atbashAttack =  AtbashAttack()
             atbashAttack.run(self.ciphertext)

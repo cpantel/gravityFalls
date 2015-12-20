@@ -2,17 +2,17 @@ from SubstitutionCipher import *
 
 
 
-#mensaje="lar zpuhtfty xweupjr ghgzt"
-#mensaje="pvrek big qf. jcdqzrf' znvefh obcx: 'c bewrs vvutbfl bt bknx cvay bknx cvay bknx'"
-#mensaje="zhofrph wr judylwb idoov. qhaw zhhn: uhwxuq wr exww lvodqg rqzdugv drvklpd!"
-#mensaje = "pu. fdhvduldq zloo eh rxw qhaw zhhn. pu. dwedvk zloo vxevwlwxwh."
-#mensaje = "fduod, zkb zrqw brx fdoo ph?"
-mensaje = "zhofrph wr judylwb idoov"
+#mensaje="LAR ZPUHTFTY XWEUPJR GHGZT"
+#mensaje="PVREK BIG QF. JCDQZRF' ZNVEFH OBCX: 'C BEWRS VVUTBFL BT BKNX CVAY BKNX CVAY BKNX'"
+#mensaje="ZHOFRPH WR JUDYLWB IDOOV. QHAW ZHHN: UHWXUQ WR EXWW LVODQG RQZDUGV DRVKLPD!"
+#mensaje = "PU. FDHVDULDQ ZLOO EH RXW QHAW ZHHN. PU. DWEDVK ZLOO VXEVWLWXWH."
+#mensaje = "FDUOD, ZKB ZRQW BRX FDOO PH?"
+mensaje = "ZHOFRPH WR JUDYLWB IDOOV"
 
-#mensaje = "pyol ys qh llfdjw: vah dncvfw ztckw xkg wffwwknllmrp? wisagcxj ar wkuisw! dpx wdsukxr: llh ubfo"
-#mensaje="lar zpuhtfty xweupjr ghgzt"
-#mensaje = "pvrek big qf. jcdqzrf' znvefh obcx: 'c bewrs vvutbfl bt bknx cvay bknx cvay bknx'"        
-#mensaje="lar zpuhtfty xweupjr ghgzt - pvrek big qf. jcdqzrf' znvefh obcx: 'c bewrs vvutbfl bt bknx cvay - pyol ys qh llfdjw: vah dncvfw ztckw xkg wffwwknllmrp? wisagcxj ar wkuisw! dpx wdsukxr: llh ubfo"
+#mensaje = "PYOL YS QH LLFDJW: VAH DNCVFW ZTCKW XKG WFFWWKNLLMRP? WISAGCXJ AR WKUISW! DPX WDSUKXR: LLH UBFO"
+#mensaje="LAR ZPUHTFTY XWEUPJR GHGZT"
+#mensaje = "PVREK BIG QF. JCDQZRF' ZNVEFH OBCX: 'C BEWRS VVUTBFL BT BKNX CVAY BKNX CVAY BKNX'"        
+#mensaje="LAR ZPUHTFTY XWEUPJR GHGZT - PVREK BIG QF. JCDQZRF' ZNVEFH OBCX: 'C BEWRS VVUTBFL BT BKNX CVAY - PYOL YS QH LLFDJW: VAH DNCVFW ZTCKW XKG WFFWWKNLLMRP? WISAGCXJ AR WKUISW! DPX WDSUKXR: LLH UBFO"
  
 
 attacker = SubstitutionCipher()

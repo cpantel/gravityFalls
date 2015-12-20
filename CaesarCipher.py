@@ -3,9 +3,9 @@ import sys
 class CaesarCipher(object):
   
   def decrypt(self,ciphertext,offset):
-     lowerLimit = ord("a")
-     upperLimit = ord("z")
-     fix = 1 + ord("z") - ord("a")
+     lowerLimit = ord("A")
+     upperLimit = ord("Z")
+     fix = 1 + ord("Z") - ord("A")
      result = ''
      for char in ciphertext:
         if ord(char) < lowerLimit or ord(char) > upperLimit:

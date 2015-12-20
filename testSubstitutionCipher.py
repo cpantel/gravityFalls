@@ -7,7 +7,7 @@ class TestAny(unittest.TestCase):
 
   def test_load(self):
      sa = SubstitutionCipher()
-     sa.load         ("zhofrph wr judylwb idoov")
+     sa.load         ("ZHOFRPH WR JUDYLWB IDOOV")
      self.assertEqual("????????????????????????",sa.cleartext)
 
 if __name__ == '__main__':

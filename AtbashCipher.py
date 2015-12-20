@@ -3,8 +3,8 @@ import sys
 class AtbashCipher(object):
   
   def decrypt(self,ciphertext):
-    lowerLimit = ord("a")
-    upperLimit = ord("z")
+    lowerLimit = ord("A")
+    upperLimit = ord("Z")
     distance = upperLimit - lowerLimit
     result = ''
 

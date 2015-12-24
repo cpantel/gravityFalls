@@ -1,33 +1,79 @@
+from Statistical import *
 from Helper import *
 
 class SubstitutionCipher(object):
     def __init__(self):
          self.dic = {}
+         self.stats = Statistical()
 
-    def load(self, ciphertext):   # driver
+    def load(self, ciphertext):
         self.ciphertext = ciphertext
-        self.cleartext = '?' * len(self.ciphertext)
-
-        for c in self.ciphertext: # replace with language function
+        for c in self.ciphertext:
             self.dic[c] = "?"
-      #  self.calculateFreq()
 
     def showDic(self):
         for c in self.dic:
-            if self.dic[c] != "?":
+            if self.dic[c] != '':
                 print "%s %s" % ( c, self.dic[c])
 
-    def decrypt(self):
+    def setDic(self, cipher, clear):
+       if clear == '':
+          clear = '#'
+       self.dic[cipher] = clear;
+
+    def decrypt(self,ciphertext):
+        result = ''
         lowerLimit = Helper.lowerLimit
         upperLimit = Helper.upperLimit
-        self.cleartext = ""
-        for char in self.ciphertext:
-            if ord(char) < lowerLimit or ord(char) > upperLimit: 
-               self.cleartext += char
+        for char in ciphertext:
+            if Helper.inRange(char):
+               if self.dic[char] != '':
+                   result += self.dic[char]
+               else:
+                   result += '#'
             else:
-               self.cleartext += self.dic[char]
+               result += char               
+        return result
+
+    def tryIt(self,ciphertext):
+       print self.decrypt
+
+    def showFrequencies1(self): #driver
+        self.stats.freq1(self.ciphertext)
+        self.stats.showFrequencies1(self.dic)
+
+    def showFrequencies2(self): #driver
+        self.stats.showFrequencies2(self.dic)
+
+    def showFrequencies3(self): #driver
+        self.stats.showFrequencies3(self.dic)
+
+    def showFrequencies(self):
+        self.showFrequencies1()
+        self.showFrequencies2()
+        self.showFrequencies3()
 
 
+
+
+    def accept(self, command):
+        if command[0:1] == 'd':
+            self.showDic()
+        elif command[0:4] == 'set ':
+            self.setDic(command[4:5], command[6:7])    
+        elif command == 'try Substitution':
+            self.tryIt(self.ciphertext)
+        elif command[0:2] == 'f1':
+            self.showFrequencies1()
+        elif command[0:2] == 'f2':
+            self.showFrequencies2()
+        elif command[0:2] == 'f3':
+            self.showFrequencies3()
+        elif command[0:1] == 'f':
+            self.showFrequencies()            
+        else:
+           return False
+        return True
 
 '''
 cleartext=

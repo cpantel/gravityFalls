@@ -3,32 +3,26 @@ import os
 from Statistical import *
 from CaesarCipher import *
 from AtbashCipher import *
+from SubstitutionCipher import *
+from Printer import *
 
 class Driver(object):
     def __init__(self):
-         self.exit = False  # driver
-         self.setCols()     # driver
+         self.exit = False
+         self.printer = Printer()
          self.stats = Statistical()
+         self.caesarCipher =  CaesarCipher()           
+         self.atbashCipher =  AtbashCipher()
+         self.substitutionCipher =  SubstitutionCipher()
+         self.printer.setCols()
 
-    def setCols(self):      # driver
-#         tty = subprocess.Popen('stty size', 'r')
-
-         tty = os.popen('stty size', 'r')
-         rows, columns = tty.read().split()
-         self.colWidth = (int(columns) - 4) / 2
 
     def load(self, ciphertext):   # driver
         self.ciphertext = ciphertext
         self.cleartext = '?' * len(self.ciphertext)
+        self.substitutionCipher.load(self.ciphertext)
 
-
-        self.calculateFreq()
-
-    def calculateFreq(self): #driver
-        self.stats.freq1(self.ciphertext)
-        self.stats.freq2(self.ciphertext)
-        self.stats.freq3(self.ciphertext)
-     
+  
     def showMessages(self):  #driver
         idx=0
         while idx * self.colWidth < len(self.ciphertext): 
@@ -44,36 +38,6 @@ class Driver(object):
             print
             idx = idx + 1
 
-    def showDic(self):
-        for c in self.dic:
-            if self.dic[c] != "?":
-                print "%s %s" % ( c, self.dic[c])
-
-    def outputLine(self,text): #driver
-        if len(self.buffer) + len(text) > (self.colWidth * 2 ) + 1:
-            self.flush()
-        else:
-            self.buffer += text + " "
-
-    def flush(self): #driver
-        if len(self.buffer) != 0:
-            print(self.buffer)
-            self.buffer = ""
-
-    def showFrequencies1(self): #driver
-        self.stats.showFrequencies1(self.dic)
-
-    def showFrequencies2(self): #driver
-        self.stats.showFrequencies2(self.dic)
-
-    def showFrequencies3(self): #driver
-        self.stats.showFrequencies3(self.dic)
-
-    def showFrequencies(self):
-        self.showFrequencies1()
-        self.showFrequencies2()
-        self.showFrequencies3()
-
     def show(self):
         self.showMessages()
         self.showDic()
@@ -81,56 +45,48 @@ class Driver(object):
 
     def accept(self):
         command = raw_input('?: ')             
-        self.setCols()
+        ### self.setCols()
+
         if command == 'q' or command == 'quit':
             return False
         elif command == '' or command[0:1] == 'm':
             self.showMessages()
-        elif command[0:1] == 'd':
-            self.showDic()
-        elif command[0:2] == 'f1':
-            self.showFrequencies1()
-        elif command[0:2] == 'f2':
-            self.showFrequencies2()
-        elif command[0:2] == 'f3':
-            self.showFrequencies3()
-        elif command[0:1] == 'f':
-            self.showFrequencies()
         elif command[0:1] == 'c': 
             self.setCols()  # command[1:5]
         elif command == 'a' or command == 'autoCol':
             self.stats.toggleAutoCol()
-        elif command[0:4] == 'set ':
-            if command[6:7]:
-                self.dic[command[4:5]] = command[6:7]
-            else:
-                self.dic[command[4:5]] = '?'
-            self.decrypt()
         elif command == 's' or command == 'show':
             self.show()
-        elif command == 'try Caesar':
-            caesarCipher =  CaesarCipher()
-            caesarCipher.tryAll(self.ciphertext)
-        elif command == 'try Atbash':
-            atbashCipher =  AtbashCipher()
-            atbashCipher.run(self.ciphertext)
-        elif command == 'ascii':
-            Helper.asciiTable()
-
         else:
+            if self.substitutionCipher.accept(command):
+               return True
+            if self.atbashCipher.accept(command):
+               return True
+            if self.caesarCipher.accept(command):
+               return True
+            if Helper.accept(command):
+               return True
+            
+            self.printHelp()
+            
+        self.lastCommand = command
+        return True
+
+    def printHelp(self):
             print
             print "Unknown command"
-            print "    q          -> quit"
-            print "    set C C    -> set Ciphertext to Cleartext"
-            print "    m          -> show messages"
-            print "    d          -> show dictionary"
-            print "    f1         -> show letter frequencies"
-            print "    f2         -> show digram frequencies"
-            print "    f3         -> show trigram frequencies"
-            print "    s          -> show all"
-            print "    a          -> toggleAutoCol"
-            print "    try Caesar -> ..."
-            print "    try Atbash -> ..."
+            print "    q                -> quit"
+            print "    set C C          -> set Ciphertext to Cleartext"
+            print "    m                -> show messages"
+            print "    d                -> show dictionary"
+            print "    f1               -> show letter frequencies"
+            print "    f2               -> show digram frequencies"
+            print "    f3               -> show trigram frequencies"
+            print "    s                -> show all"
+            print "    a                -> toggleAutoCol"
+            print "    try Caesar       -> ..."
+            print "    try Atbash       -> ..."
+            print "    try Substitution -> ..."
             print "    TODO ascii"
             print "    TODO tables"
             print "    TODO "
@@ -142,5 +98,3 @@ class Driver(object):
             print "    TODO double map"            
             print "    TODO "
             print
-        self.lastCommand = command
-        return True

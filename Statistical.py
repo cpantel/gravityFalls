@@ -1,22 +1,17 @@
 import sys
 import os
 from Helper import *
+from Printer import *
 
 class Statistical(object):
-    def __init__(self):
-         self.spacing = False
-         self.autoCol = False
-         self.buffer = ""
-         tty = os.popen('stty size', 'r')
-         rows, columns = tty.read().split()
-         self.colWidth = (int(columns) - 4) / 2
+
          
     def freq1(self, text):         
         self.stats1 = {}
         lowerLimit = Helper.lowerLimit
         upperLimit = Helper.upperLimit
         for c in text:
-          if self.spacing != False and Helper.inRange(c):
+          if Helper.inRange(c):
             if c in self.stats1:
                 self.stats1[c] += 1
             else:
@@ -26,7 +21,7 @@ class Statistical(object):
         self.stats2 = {}
         for idx in range(0,len(text) - 1):
           digram= text[idx:idx + 2]
-          if self.spacing != False and self.spacing in digram:  ## fix it
+          if Helper.inRange(digram):
             pass
           else:
             if digram in self.stats2:
@@ -38,7 +33,7 @@ class Statistical(object):
         self.stats3 = {}
         for idx in range(0,len(text) - 2):
           trigram= text[idx:idx + 3]
-          if self.spacing != False and self.spacing in trigram: ## fix it
+          if Helper.inRange(trigram):
             pass
           else:
             if trigram in self.stats3:
@@ -61,20 +56,4 @@ class Statistical(object):
             self.outputLine(format("%s:%2d->%s" % (c, self.stats3[c],dictionary[c[0:1]] + dictionary[c[1:2]] + dictionary[c[2:3]])))
         self.flush()
 
-    def outputLine(self,text):
-      if self.autoCol:
-        if len(self.buffer) + len(text) > (self.colWidth * 2 ) + 1:
-            self.flush()
-        else:
-            self.buffer += text + " "
-      else:
-        print text
 
-    def toggleAutoCol(self):
-      self.autoCol = not self.autoCol
-
-    def flush(self):
-        if len(self.buffer) != 0:
-            print(self.buffer)
-            self.buffer=""
-            

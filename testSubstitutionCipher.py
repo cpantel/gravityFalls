@@ -2,13 +2,11 @@ import unittest
 from SubstitutionCipher import *
 
 class TestAny(unittest.TestCase):
-  def test_upper(self):
+  def test_decrypt(self):
       sa = SubstitutionCipher()
-
-  def test_load(self):
-     sa = SubstitutionCipher()
-     sa.load         ("ZHOFRPH WR JUDYLWB IDOOV")
-     self.assertEqual("????????????????????????",sa.cleartext)
+      sa.setDic('A','B')
+      
+      self.assertEqual('B',sa.decrypt('A'))
 
 if __name__ == '__main__':
     unittest.main()

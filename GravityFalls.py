@@ -17,8 +17,8 @@ message = "PU. FDHVDULDQ ZLOO EH RXW QHAW ZHHN. PU. DWEDVK ZLOO VXEVWLWXWH."
 #message="LAR ZPUHTFTY XWEUPJR GHGZT - PVREK BIG QF. JCDQZRF' ZNVEFH OBCX: 'C BEWRS VVUTBFL BT BKNX CVAY - PYOL YS QH LLFDJW: VAH DNCVFW ZTCKW XKG WFFWWKNLLMRP? WISAGCXJ AR WKUISW! DPX WDSUKXR: LLH UBFO"
  
 
-attacker = Driver()
-attacker.load(message)
-#attacker.showMessages()
-while attacker.accept():
+driver = Driver()
+driver.load(message)
+#driver.showMessages()
+while driver.accept():
     pass

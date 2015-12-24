@@ -17,9 +17,15 @@ class CaesarCipher(object):
             fixed = fixed + fix 
           result += chr(fixed)
      return result     
-     
+
+  def accept(self, command):
+        if command == 'try Caesar':
+            self.tryIt(self.ciphertext)            
+        else:
+           return False
+        return True     
   
-  def tryAll(self,ciphertext):
+  def tryIt(self,ciphertext):
     sys.stdout.write("    ")   
     sys.stdout.write(ciphertext)
     sys.stdout.write("\n")

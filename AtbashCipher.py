@@ -16,8 +16,15 @@ class AtbashCipher(object):
       else:
         result += chr(lowerLimit + upperLimit - pos)
     return result
+
+  def accept(self, command):
+        if command == 'try Atbash':
+            self.tryIt(self.ciphertext)            
+        else:
+           return False
+        return True
   
-  def run(self,ciphertext):
+  def tryIt(self,ciphertext):
     sys.stdout.write("    ")   
     sys.stdout.write(ciphertext)
     sys.stdout.write("\n")

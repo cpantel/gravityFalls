@@ -18,7 +18,7 @@ class AtbashCipher(object):
     return result
 
   def accept(self, command, ciphertext):
-        if command == 'try Atbash':
-           return (True, False, self.decrypt(ciphertext))
-        return (False, False, '')
+    if command == 'try Atbash':
+      return (True, False, self.decrypt(ciphertext))
+    return (False, False, '')
     

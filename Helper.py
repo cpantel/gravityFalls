@@ -12,14 +12,15 @@ class Helper(object):
 
     @staticmethod
     def asciiTable():
-        offset = -32
+        result = ''
+        offset = 32
         for pos in range(Helper.lowerLimit, Helper.upperLimit):
-           print pos + offset, chr(pos + offset), repr(pos).rjust(3), chr(pos) 
-
+           result +=  "%(posoffset)3d %(chrposoffset)s %(pos)3d %(chrpos)s\n" % \
+               {'posoffset' :pos + offset, 'chrposoffset': chr(pos+offset), 'pos': pos, 'chrpos' : chr(pos)}
+        return result
+     
     @staticmethod
-    def accept(command):
+    def accept(command, ciphertext):
        if command == 'ascii':
-          Helper.asciiTable()
-       else:
-          return False
-       return True
+          return (True, False, Helper.asciiTable())
+       return (False, False, '')

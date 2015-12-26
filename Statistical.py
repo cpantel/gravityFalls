@@ -8,8 +8,6 @@ class Statistical(object):
          
     def freq1(self, text):         
         self.stats1 = {}
-        lowerLimit = Helper.lowerLimit
-        upperLimit = Helper.upperLimit
         for c in text:
           if Helper.inRange(c):
             if c in self.stats1:
@@ -21,9 +19,7 @@ class Statistical(object):
         self.stats2 = {}
         for idx in range(0,len(text) - 1):
           digram= text[idx:idx + 2]
-          if Helper.inRange(digram):
-            pass
-          else:
+          if  Helper.inRange(digram):
             if digram in self.stats2:
                 self.stats2[digram] += 1
             else:
@@ -34,8 +30,6 @@ class Statistical(object):
         for idx in range(0,len(text) - 2):
           trigram= text[idx:idx + 3]
           if Helper.inRange(trigram):
-            pass
-          else:
             if trigram in self.stats3:
                 self.stats3[trigram] += 1
             else:

@@ -18,19 +18,18 @@ class CaesarCipher(object):
           result += chr(fixed)
      return result     
 
-  def accept(self, command):
-        if command == 'try Caesar':
-            self.tryIt(self.ciphertext)            
-        else:
-           return False
-        return True     
   
   def tryIt(self,ciphertext):
-    sys.stdout.write("    ")   
-    sys.stdout.write(ciphertext)
-    sys.stdout.write("\n")
+    result = ''
     for offset in range(1,26):
-      sys.stdout.write( repr(offset).rjust(3))
-      sys.stdout.write(" ")
-      sys.stdout.write(self.decrypt(ciphertext,offset))
-      sys.stdout.write("\n")
+      result += repr(offset).rjust(3) 
+      result += " "
+      result += self.decrypt(ciphertext,offset)
+      result += "\n"
+    return result
+
+
+  def accept(self, command, ciphertext):
+        if command == 'try Caesar':
+           return (True, False, self.tryIt(ciphertext))   
+        return (False, False, '')

@@ -38,14 +38,13 @@ class SubstitutionCipher(object):
     def tryIt(self,ciphertext):
        print self.decrypt
 
-    def showFrequencies1(self): #driver
-        self.stats.freq1(self.ciphertext)
+    def showFrequencies1(self):
         self.stats.showFrequencies1(self.dic)
 
-    def showFrequencies2(self): #driver
+    def showFrequencies2(self):
         self.stats.showFrequencies2(self.dic)
 
-    def showFrequencies3(self): #driver
+    def showFrequencies3(self):
         self.stats.showFrequencies3(self.dic)
 
     def showFrequencies(self):
@@ -56,7 +55,7 @@ class SubstitutionCipher(object):
 
 
 
-    def accept(self, command):
+    def accept(self, command, ciphertext):
         if command[0:1] == 'd':
             self.showDic()
         elif command[0:4] == 'set ':
@@ -71,9 +70,8 @@ class SubstitutionCipher(object):
             self.showFrequencies3()
         elif command[0:1] == 'f':
             self.showFrequencies()            
-        else:
-           return False
-        return True
+
+        return (False,False,'')
 
 '''
 cleartext=

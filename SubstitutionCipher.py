@@ -3,25 +3,25 @@ from Helper import *
 
 class SubstitutionCipher(object):
   def __init__(self):
-    self.dictionary = {}
+    self.code = {}
     self.stats = Statistical()
 
   def load(self, ciphertext):
     self.ciphertext = ciphertext
     for c in self.ciphertext:
-      self.dictionary[c] = "?"
+      self.code[c] = "?"
 
-  def showDic(self):
+  def showCodes(self):
     result = ''      
-    for c in self.dictionary:
-      if self.dictionary[c] != '':
-        result += "%s %s\n" % ( c, self.dictionary[c])
+    for c in self.code:
+      if self.code[c] != '':
+        result += "%s %s\n" % ( c, self.code[c])
     return result
 
-  def setDic(self, cipher, clear):
+  def setCode(self, cipher, clear):
     if clear == '':
       clear = '#'
-    self.dictionary[cipher] = clear;
+    self.code[cipher] = clear;
 
   def decrypt(self,ciphertext):
     result = ''
@@ -29,8 +29,8 @@ class SubstitutionCipher(object):
     upperLimit = Helper.upperLimit
     for char in ciphertext:
       if Helper.inRange(char):
-        if self.dictionary[char] != '':
-          result += self.dictionary[char]
+        if self.code[char] != '':
+          result += self.code[char]
         else:
           result += '#'
       else:
@@ -39,12 +39,12 @@ class SubstitutionCipher(object):
 
   def accept(self, command, ciphertext):
     if command[0:1] == 'd':
-      return (True, False, self.showDic())
+      return (True, False, self.showCodes())
     elif command[0:4] == 'set ':
-      self.setDic(command[4:5], command[6:7])
+      self.setCode(command[4:5], command[6:7])
       return (True, False, '')
     elif command == 'try Substitution':
       return (True, False, self.decrypt(ciphertext))
     else:
-      return self.stats.accept(command, ciphertext, self.dictionary)
+      return self.stats.accept(command, ciphertext, self.code)
 

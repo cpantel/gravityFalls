@@ -8,7 +8,7 @@ class Helper(object):
       pos = ord(char)
       if pos < Helper.lowerLimit or pos > Helper.upperLimit:
         return False
-      return True
+    return True
 
   @staticmethod
   def asciiTable():

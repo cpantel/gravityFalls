@@ -78,7 +78,7 @@ class Driver(object):
             print "    q                -> quit"
             print "    set C C          -> set Ciphertext to Cleartext"
             print "    m                -> show messages"
-            print "    d                -> show dictionary"
+            print "    c                -> show code"
             print "    f1               -> show letter frequencies"
             print "    f2               -> show digram frequencies"
             print "    f3               -> show trigram frequencies"

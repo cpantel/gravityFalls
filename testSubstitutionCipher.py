@@ -4,7 +4,7 @@ from SubstitutionCipher import *
 class TestAny(unittest.TestCase):
   def test_decrypt(self):
       sa = SubstitutionCipher()
-      sa.setDic('A','B')
+      sa.setCode('A','B')
       
       self.assertEqual('B',sa.decrypt('A'))
 

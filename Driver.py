@@ -13,6 +13,7 @@ class Driver(object):
          self.atbashCipher =  AtbashCipher()
          self.substitutionCipher =  SubstitutionCipher()
          self.printer.setCols()
+         self.ciphertext = ''
 
     def accept(self):
         command = raw_input('?: ')             
@@ -42,26 +43,21 @@ class Driver(object):
     def printHelp(self):
             print
             print "Unknown command"
-            print "    q                -> quit"
-            print "    set C C          -> set Ciphertext to Cleartext"
-            print "    m                -> show messages"
-            print "    c                -> show code"
-            print "    f1               -> show letter frequencies"
-            print "    f2               -> show digram frequencies"
-            print "    f3               -> show trigram frequencies"
-            print "    s                -> show all"
-            print "    a                -> toggleAutoCol"
-            print "    try Caesar       -> ..."
-            print "    try Atbash       -> ..."
-            print "    try Substitution -> ..."
-            print "    TODO ascii"
-            print "    TODO tables"
-            print "    TODO "
-            print "    TODO loadDic"
-            print "    TODO saveDic"
-            print "    TODO loadMsg"
-            print "    TODO saveMsg"
-            print "    TODO refactor classes"
-            print "    TODO double map"            
-            print "    TODO "
+            print "    set C C                -> set Code Ciphertext to  Cleartext"
+            print "    m                      -> show messages"
+            print "    codes                  -> show code"
+            print "    f1                     -> show letter frequency"
+            print "    f2                     -> show digram frequency"
+            print "    f3                     -> show trigram frequency"
+            print " (TODO) ffw                 -> show first char word frequency"
+            print " (TODO) fw                  -> show word frequency"
+            print " (TODO) fd                  -> show double char frequency"
+            print " (TODO) patterns            -> show patterns"
+            print "    try Caesar             -> decrypt with Caesar cipher"
+            print "    try Atbash             -> decrypt with Atbash cipher"
+            print "    try Substitution       -> decrypt with Substitution cipher"
+            print "    english corpus         -> show known english corpus frequencies"
+            print " (TODO) loadCodes FILENAME  -> load codes from file"
+            print " (TODO) saveCodes FILENAME  -> save codes to file"
+            print "    q                      -> quit"
             print

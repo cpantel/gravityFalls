@@ -21,7 +21,7 @@ class SubstitutionCipher(object):
 
   def updateCodes(self, ciphertext):
     for c in ciphertext:
-      if Helper:inRange(c):
+      if Helper.inRange(c):
         try:
           self.code[c]
         except KeyError:
@@ -41,7 +41,7 @@ class SubstitutionCipher(object):
     return result
 
   def accept(self, command, ciphertext):
-    if command[0:1] == 'd':
+    if command == 'codes':
       return (True, False, self.showCodes())
     elif command[0:4] == 'set ':
       self.setCode(command[4:5], command[6:7])

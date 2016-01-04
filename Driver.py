@@ -17,14 +17,15 @@ class Driver(object):
 
     def accept(self):
         command = raw_input('?: ')             
-
+        command = command.strip()
+        command = command.lower()
         if command == 'q' or command == 'quit':
             return False
         elif  command[0:1] == 'm':
           if command == 'm':
             (handled, error, result) = (True,False, '    ' + self.ciphertext)
           else:
-            self.ciphertext = command[2:]
+            self.ciphertext = command[2:].upper()
             (handled, error, result) = (True, False, self.ciphertext)
         else:
            handlers = { self.atbashCipher, self.substitutionCipher,  self.caesarCipher, Helper }

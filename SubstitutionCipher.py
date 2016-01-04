@@ -17,7 +17,7 @@ class SubstitutionCipher(object):
   def setCode(self, cipher, clear):
     if clear == '':
       clear = '·'
-    self.code[cipher] = clear;
+    self.code[cipher.upper()] = clear.upper();
 
   def updateCodes(self, ciphertext):
     for c in ciphertext:
@@ -43,9 +43,9 @@ class SubstitutionCipher(object):
     if command == 'codes':
       return (True, False, self.showCodes())
     elif command[0:4] == 'set ':
-      self.setCode(command[4:5], command[6:7])
+      self.setCode(command[4:5] , command[6:7])
       return (True, False, '')
-    elif command == 'try Substitution':
+    elif command == 'try substitution':
       return (True, False, '    ' + self.decrypt(ciphertext))
     else:
       self.updateCodes(ciphertext)

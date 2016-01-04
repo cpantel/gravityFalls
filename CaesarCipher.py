@@ -29,6 +29,6 @@ class CaesarCipher(object):
 
 
   def accept(self, command, ciphertext):
-    if command == 'try Caesar':
+    if command == 'try caesar':
       return (True, False, self.tryIt(ciphertext))   
     return (False, False, '')

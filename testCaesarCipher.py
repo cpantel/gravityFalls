@@ -7,6 +7,9 @@ class TestCaesarCipher(unittest.TestCase):
       
       self.assertEqual("XYZ",sa.decrypt("ABC",3))
 
+  def test_accept(self):
+      sa = CaesarCipher()
+      self.assertEqual((False,False,''), sa.accept('command','arguments'))
 
 
 if __name__ == '__main__':

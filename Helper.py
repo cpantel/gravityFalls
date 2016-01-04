@@ -71,6 +71,6 @@ class Helper(object):
      
   @staticmethod
   def accept(command, ciphertext):
-    if command == 'show english corpus':
+    if command == 'english corpus':
       return (True, False, Helper.showEnglishCorpus())
     return (False, False, '')

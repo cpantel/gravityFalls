@@ -44,7 +44,8 @@ class Driver(object):
     def printHelp(self):
             print
             print "Unknown command"
-            print "    set C C                -> set Code Ciphertext to  Cleartext"
+            print "    set C C                -> set Code Ciphertext to  Cleartext (TODO: set CCCC CCCC)"
+            print "    unset C                -> unset Code (like set C)           (TODO: unset CCCC")
             print "    m                      -> show messages"
             print "    codes                  -> show code"
             print "    f1                     -> show letter frequency"
@@ -53,12 +54,14 @@ class Driver(object):
             print "    ffw                    -> show first char word frequency"
             print "    fw                     -> show word frequency"
             print "    fd                     -> show double char frequency"
-            print "    pattern WORD           -> show pattern"
-            print " (TODO) patterns            -> show patterns"
+            print "    pattern WORD           -> show WORD pattern"
+            print "    patterns               -> show patterns"
             print "    try Caesar             -> decrypt with Caesar cipher"
             print "    try Atbash             -> decrypt with Atbash cipher"
             print "    try Substitution       -> decrypt with Substitution cipher"
             print "    english corpus         -> show known english corpus frequencies"
+            print " (TODO) make corpus         -> use current message as corpus"
+            print " (TODO) current corpus      -> show current corpus frequencies"
             print " (TODO) loadCodes FILENAME  -> load codes from file"
             print " (TODO) saveCodes FILENAME  -> save codes to file"
             print "    q                      -> quit"

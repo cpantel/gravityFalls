@@ -19,6 +19,9 @@ class SubstitutionCipher(object):
       clear = '·'
     self.code[cipher.upper()] = clear.upper();
 
+  def unsetCode(self, cipher):
+    self.setCode(cipher)
+
   def updateCodes(self, ciphertext):
     for c in ciphertext:
       if Helper.inRange(c):

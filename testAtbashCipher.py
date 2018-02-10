@@ -17,7 +17,9 @@ class TestAtbashCipher(unittest.TestCase):
       
       self.assertEqual("A",sa.decrypt("Z"))
 
-
+  def test_accept(self):
+      sa = AtbashCipher()
+      self.assertEqual((False,False,''), sa.accept('command','arguments'))
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,172 @@
+f1	
+E	12.1     
+T	8.94
+A	8.55
+O	7.47
+I	7.33
+N	7.17
+S	6.73
+R	6.33
+H	4.96
+L	4.21
+D	3.87
+C	3.16
+U	2.68
+M	2.53
+F	2.18
+G	2.09
+P	2.07
+W	1.83
+Y	1.72
+B	1.6
+V	1.06
+K	0.81
+J	0.22
+X	0.19
+Z	0.11
+Q	0.1
+
+
+'E','T','A','O','I','N','S','R','H','L','D','C','U','M','F','G','P','W','Y','B','V','K','J','X','Z','Q'
+
+
+fw	
+THE	6.42
+OF	2.76
+AND	2.75
+TO	2.67
+A	2.43
+IN	2.31
+IS	1.12
+FOR	1.01
+THAT	0.92
+WAS	0.88
+ON	0.78
+WITH	0.75
+HE	0.75
+IT	0.74
+AS	0.71
+AT	0.58
+HIS	0.55
+BY	0.51
+BE	0.48
+ARE	0.47
+FROM	0.47
+THIS	0.42
+I	0.41
+BUT	0.4
+HAVE	0.39
+AN	0.37
+HAS	0.35
+NOT	0.34
+THEY	0.33
+OR	0.3
+
+
+
+'THE','OF','AND','TO','A','IN','IS','FOR','THAT','WAS','ON','WITH','HE','IT','AS','AT','HIS','BY','BE','ARE','FROM','THIS','I','BUT','HAVE','AN','HAS','NOT','THEY','OR'
+	
+f2	
+TH	2.71
+HE	2.33
+IN	2.03
+ER	1.78
+AN	1.61
+RE	1.41
+ES	1.32
+ON	1.32
+ST	1.25
+NT	1.17
+EN	1.13
+AT	1.12
+ED	1.08
+ND	1.07
+TO	1.07
+OR	1.06
+EA	1
+TI	0.99
+AR	0.98
+TE	0.98
+NG	0.89
+AL	0.88
+IT	0.88
+AS	0.87
+IS	0.86
+HA	0.83
+ET	0.76
+SE	0.73
+OU	0.72
+OF	0.71
+
+
+
+'TH','HE','IN','ER','AN','RE','ES','ON','ST','NT','EN','AT','ED','ND','TO','OR','EA','TI','AR','TE','NG','AL','IT','AS','IS','HA','ET','SE','OU','OF'
+
+
+f3	
+THE	1.81
+AND	0.73
+ING	0.72
+ENT	0.42
+ION	0.42
+HER	0.36
+FOR	0.34
+THA	0.33
+NTH	0.33
+INT	0.32
+ERE	0.31
+TIO	0.31
+TER	0.3
+EST	0.28
+ERS	0.28
+ATI	0.26
+HAT	0.26
+ATE	0.25
+ALL	0.25
+HES	0.24
+VER	0.24
+HIS	0.24
+ETH	0.24
+OFT	0.22
+ITH	0.21
+FTH	0.21
+STH	0.21
+OTH	0.21
+RES	0.21
+ONT	0.2
+
+
+
+'THE','AND','ING','ENT','ION','HER','FOR','THA','NTH','INT','ERE','TIO','TER','EST','ERS','ATI','HAT','ATE','ALL','HES','VER','HIS','ETH','OFT','ITH','FTH','STH','OTH','RES','ONT'
+
+
+ffw	
+T	16.671
+A	11.602
+S	7.755
+H	7.232
+W	6.753
+I	6.286
+O	6.264
+B	4.702
+M	4.383
+F	3.779
+C	3.511
+L	2.705
+D	2.67
+P	2.545
+N	2.365
+E	2.007
+G	1.95
+R	1.653
+Y	1.62
+U	1.487
+V	0.649
+J	0.597
+K	0.59
+Q	0.173
+Z	0.034
+X	0.017
+
+
+'T','A','S','H','W','I','O','B','M','F','C','L','D','P','N','E','G','R','Y','U','V','J','K','Q','Z','X'

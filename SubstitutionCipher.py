@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Statistical import *
 from Helper import *
 
@@ -5,11 +6,6 @@ class SubstitutionCipher(object):
   def __init__(self):
     self.code = {}
     self.stats = Statistical()
-
-  def load(self, ciphertext):
-    self.ciphertext = ciphertext
-    for c in self.ciphertext:
-      self.code[c] = "?"
 
   def showCodes(self):
     result = ''      
@@ -20,31 +16,41 @@ class SubstitutionCipher(object):
 
   def setCode(self, cipher, clear):
     if clear == '':
-      clear = '#'
-    self.code[cipher] = clear;
+      clear = '·'
+    self.code[cipher.upper()] = clear.upper();
+
+  def unsetCode(self, cipher):
+    self.setCode(cipher)
+
+  def updateCodes(self, ciphertext):
+    for c in ciphertext:
+      if Helper.inRange(c):
+        try:
+          self.code[c]
+        except KeyError:
+          self.code[c] = '·'
 
   def decrypt(self,ciphertext):
+    self.updateCodes(ciphertext)
     result = ''
     lowerLimit = Helper.lowerLimit
     upperLimit = Helper.upperLimit
     for char in ciphertext:
       if Helper.inRange(char):
-        if self.code[char] != '':
-          result += self.code[char]
-        else:
-          result += '#'
+        result += self.code[char]
       else:
         result += char               
     return result
 
   def accept(self, command, ciphertext):
-    if command[0:1] == 'd':
+    if command == 'codes':
       return (True, False, self.showCodes())
     elif command[0:4] == 'set ':
-      self.setCode(command[4:5], command[6:7])
+      self.setCode(command[4:5] , command[6:7])
       return (True, False, '')
-    elif command == 'try Substitution':
-      return (True, False, self.decrypt(ciphertext))
+    elif command == 'try substitution':
+      return (True, False, '    ' + self.decrypt(ciphertext))
     else:
+      self.updateCodes(ciphertext)
       return self.stats.accept(command, ciphertext, self.code)
 

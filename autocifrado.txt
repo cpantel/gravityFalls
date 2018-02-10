@@ -1,0 +1,40 @@
+?: set M A
+
+?: set E B
+
+?: set N C
+
+?: set C D
+
+?: set I E
+
+?: set O F
+
+?: set D G
+
+?: set H H
+
+?: set R I
+
+?: set A J
+
+?: set Q K
+
+?: set U L
+
+?: set L M
+
+?: set S N
+
+?: set F O
+
+?: set T P
+
+?: set J Q
+
+?: set P R
+
+?: set G S
+
+?: set Y T
+
